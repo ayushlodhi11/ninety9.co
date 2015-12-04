@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Listings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Price</th>
+      <th>Postal code</th>
+      <th>Listing type</th>
+      <th>User</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listings.each do |listing| %>
+      <tr>
+        <td><%= listing.price %></td>
+        <td><%= listing.postal_code %></td>
+        <td><%= listing.listing_type %></td>
+        <td><%= listing.user_id %></td>
+        <td><%= listing.status %></td>
+        <td><%= link_to 'Show', listing %></td>
+        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Listing', new_listing_path %>
