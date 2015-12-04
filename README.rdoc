@@ -5,24 +5,39 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.2.3
 
-* System dependencies
+* host http://54.254.154.38/
 
-* Configuration
+* listing service: 
+  - /listings.html or /listings.json 
+    - GET -> #list all
+    - POST -> #create new
 
-* Database creation
+  - /listings/:id/edit.html or /listings/:id/edit.json 
+    - GET -> #edit
 
-* Database initialization
+  - /listings/:id.html or /listings/:id.json
+    - GET -> #show 
+    - PUT -> #update
+    - DELETE ->  #destroy
 
-* How to run the test suite
+* User service: 
+  - /users.html or /users.json 
+    - GET -> #list all
+    - POST -> #create new
 
-* Services (job queues, cache servers, search engines, etc.)
+  - /users/:id/edit.html or /users/:id/edit.json 
+    - GET -> #edit
 
-* Deployment instructions
+  - /users/:id.html or /users/:id.json
+    - GET -> #show 
+    - PUT -> #update
+    - DELETE ->  #destroy
 
-* ...
+* Price Change Indexer
+  - /price_changer_index.html?listing_id=1 or /price_changer_index.json?listing_id=1
+    - GET -> #show price update history
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+

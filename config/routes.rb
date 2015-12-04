@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :listings
   resources :users
 
-  get '/get_all' => 'users#get_all'
+  get '/price_changer_index' => 'listings#price_changer'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

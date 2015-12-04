@@ -1,6 +1,5 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-
   # GET /listings
   # GET /listings.json
   def index
@@ -61,6 +60,16 @@ class ListingsController < ApplicationController
     end
   end
 
+  def price_changer
+    render json: {:status => :failed, :message => "missing listing id"} and return false unless params[:listing_id]
+    @price_history = PriceChange.where(:listing_id => params[:listing_id])
+    
+    respond_to do |format|
+      format.html { render template: '/listings/price_indexer' }
+      format.json { render json: @price_history, :except=>[:listing_id]  } 
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
@@ -69,6 +78,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:price, :postal_code, :listing_type_id, :user_id, :status_id)
+      params.require(:listing).permit(:price, :postal_code, :listing_type, :user_id, :status)
     end
 end
